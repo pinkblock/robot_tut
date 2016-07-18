@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20160718 10:19:06.889" generator="Robot 3.0 (Python 2.7.6 on linux2)">
+<suite source="/home/seith/Code/repos/robot_tut/robot/implementation/testsuites/dec_login.robot" id="s1" name="Dec Login">
+<test id="s1-t1" name="lexmark_installer">
+<kw type="setup" name="Open Browser To Login Page" library="dec_resource">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20160718 10:19:06.968" level="INFO">Opening browser 'chrome' to base url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20160718 10:19:08.813" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20160718 10:19:08.814" starttime="20160718 10:19:08.811"></status>
+</kw>
+<msg timestamp="20160718 10:19:08.814" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20160718 10:19:08.814" level="FAIL">WebDriverException: Message: unknown error: unrecognized Blink revision: 4fc366553993dd1524b47a280fed49d8ec28421e
+  (Driver info: chromedriver=2.10.267518,platform=Linux 3.16.0-38-generic x86_64)
+</msg>
+<status status="FAIL" endtime="20160718 10:19:08.814" starttime="20160718 10:19:06.968"></status>
+</kw>
+<status status="FAIL" endtime="20160718 10:19:08.815" starttime="20160718 10:19:06.967"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20160718 10:19:08.815" starttime="20160718 10:19:08.815"></status>
+</kw>
+<status status="FAIL" endtime="20160718 10:19:08.815" critical="yes" starttime="20160718 10:19:06.967">Setup failed:
+WebDriverException: Message: unknown error: unrecognized Blink revision: 4fc366553993dd1524b47a280fed49d8ec28421e
+  (Driver info: chromedriver=2.10.267518,platform=Linux 3.16.0-38-generic x86_64)
+</status>
+</test>
+<test id="s1-t2" name="admin">
+<kw type="setup" name="Open Browser To Login Page" library="dec_resource">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20160718 10:19:08.817" level="INFO">Opening browser 'chrome' to base url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20160718 10:19:10.601" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20160718 10:19:10.601" starttime="20160718 10:19:10.599"></status>
+</kw>
+<msg timestamp="20160718 10:19:10.602" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20160718 10:19:10.602" level="FAIL">WebDriverException: Message: unknown error: unrecognized Blink revision: 4fc366553993dd1524b47a280fed49d8ec28421e
+  (Driver info: chromedriver=2.10.267518,platform=Linux 3.16.0-38-generic x86_64)
+</msg>
+<status status="FAIL" endtime="20160718 10:19:10.602" starttime="20160718 10:19:08.817"></status>
+</kw>
+<status status="FAIL" endtime="20160718 10:19:10.603" starttime="20160718 10:19:08.816"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20160718 10:19:10.603" starttime="20160718 10:19:10.603"></status>
+</kw>
+<status status="FAIL" endtime="20160718 10:19:10.603" critical="yes" starttime="20160718 10:19:08.816">Setup failed:
+WebDriverException: Message: unknown error: unrecognized Blink revision: 4fc366553993dd1524b47a280fed49d8ec28421e
+  (Driver info: chromedriver=2.10.267518,platform=Linux 3.16.0-38-generic x86_64)
+</status>
+</test>
+<doc>A test suite containing tests related to users logging into DM.
+
+These tests are data-driven by nature. They use a single
+keyword, specified with Test Template setting, that is called
+with different arguments to cover different scenarios.</doc>
+<status status="FAIL" endtime="20160718 10:19:10.604" starttime="20160718 10:19:06.890"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="2" pass="0">Critical Tests</stat>
+<stat fail="2" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="2" id="s1" name="Dec Login" pass="0">Dec Login</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20160718 10:19:08.814" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20160718 10:19:10.602" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+</errors>
+</robot>

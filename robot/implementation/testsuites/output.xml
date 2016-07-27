@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20160718 10:19:06.889" generator="Robot 3.0 (Python 2.7.6 on linux2)">
-<suite source="/home/seith/Code/repos/robot_tut/robot/implementation/testsuites/dec_login.robot" id="s1" name="Dec Login">
-<test id="s1-t1" name="lexmark_installer">
+<robot generated="20160727 10:21:43.378" generator="Robot 3.0 (Python 2.7.12 on linux2)">
+<suite source="/home/seith/Code/repos/robot_tut/robot/implementation/testsuites" id="s1" name="Testsuites">
+<suite source="/home/seith/Code/repos/robot_tut/robot/implementation/testsuites/dec_invalid_login.robot" id="s1-s1" name="Dec Invalid Login">
 <kw type="setup" name="Open Browser To Login Page" library="dec_resource">
 <kw name="Open Browser" library="Selenium2Library">
 <doc>Opens a new browser instance to given URL.</doc>
@@ -9,30 +9,601 @@
 <arg>${LOGIN URL}</arg>
 <arg>${BROWSER}</arg>
 </arguments>
-<msg timestamp="20160718 10:19:06.968" level="INFO">Opening browser 'chrome' to base url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
-<kw name="Capture Page Screenshot" library="Selenium2Library">
-<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<msg timestamp="20160718 10:19:08.813" level="FAIL">No browser is open</msg>
-<status status="FAIL" endtime="20160718 10:19:08.814" starttime="20160718 10:19:08.811"></status>
+<msg timestamp="20160727 10:21:43.474" level="INFO">Opening browser 'PhantomJS' to base url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<status status="PASS" endtime="20160727 10:21:45.160" starttime="20160727 10:21:43.474"></status>
 </kw>
-<msg timestamp="20160718 10:19:08.814" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
-<msg timestamp="20160718 10:19:08.814" level="FAIL">WebDriverException: Message: unknown error: unrecognized Blink revision: 4fc366553993dd1524b47a280fed49d8ec28421e
-  (Driver info: chromedriver=2.10.267518,platform=Linux 3.16.0-38-generic x86_64)
-</msg>
-<status status="FAIL" endtime="20160718 10:19:08.814" starttime="20160718 10:19:06.968"></status>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20160727 10:21:45.163" starttime="20160727 10:21:45.160"></status>
 </kw>
-<status status="FAIL" endtime="20160718 10:19:08.815" starttime="20160718 10:19:06.967"></status>
+<kw name="Set Selenium Speed" library="Selenium2Library">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20160727 10:21:45.164" starttime="20160727 10:21:45.163"></status>
 </kw>
-<kw type="teardown" name="Close Browser" library="Selenium2Library">
-<doc>Closes the current browser.</doc>
-<status status="PASS" endtime="20160718 10:19:08.815" starttime="20160718 10:19:08.815"></status>
+<kw name="Login Page Should Be Open" library="dec_resource">
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:45.166" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:45.166" starttime="20160727 10:21:45.164"></status>
 </kw>
-<status status="FAIL" endtime="20160718 10:19:08.815" critical="yes" starttime="20160718 10:19:06.967">Setup failed:
-WebDriverException: Message: unknown error: unrecognized Blink revision: 4fc366553993dd1524b47a280fed49d8ec28421e
-  (Driver info: chromedriver=2.10.267518,platform=Linux 3.16.0-38-generic x86_64)
-</status>
+<status status="PASS" endtime="20160727 10:21:45.166" starttime="20160727 10:21:45.164"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:45.166" starttime="20160727 10:21:43.474"></status>
+</kw>
+<test id="s1-s1-t1" name="Invalid Username">
+<kw type="setup" name="Go To Login Page" library="dec_resource">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:45.168" level="INFO">Opening url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<status status="PASS" endtime="20160727 10:21:45.381" starttime="20160727 10:21:45.168"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="dec_resource">
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:45.384" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:45.384" starttime="20160727 10:21:45.382"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:45.385" starttime="20160727 10:21:45.381"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:45.385" starttime="20160727 10:21:45.167"></status>
+</kw>
+<kw name="Login With Invalid Credentials Should Fail">
+<arguments>
+<arg>invalid</arg>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Input Username" library="dec_resource">
+<arguments>
+<arg>${username}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:45.386" level="INFO">Typing text 'invalid' into text field 'user_email'</msg>
+<status status="PASS" endtime="20160727 10:21:45.432" starttime="20160727 10:21:45.386"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:45.433" starttime="20160727 10:21:45.385"></status>
+</kw>
+<kw name="Input Password" library="dec_resource">
+<arguments>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:45.433" level="INFO">Typing text 'password' into text field 'user_password'</msg>
+<status status="PASS" endtime="20160727 10:21:45.482" starttime="20160727 10:21:45.433"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:45.482" starttime="20160727 10:21:45.433"></status>
+</kw>
+<kw name="Submit Credentials" library="dec_resource">
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>commit</arg>
+</arguments>
+<msg timestamp="20160727 10:21:45.483" level="INFO">Clicking button 'commit'.</msg>
+<status status="PASS" endtime="20160727 10:21:45.722" starttime="20160727 10:21:45.483"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:45.722" starttime="20160727 10:21:45.483"></status>
+</kw>
+<kw name="Login Should Have Failed">
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly `url`.</doc>
+<arguments>
+<arg>${ERROR URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:45.725" level="INFO">Current location is 'https://idp-staging.psft.co/auth/users/sign_in'.</msg>
+<status status="PASS" endtime="20160727 10:21:45.725" starttime="20160727 10:21:45.722"></status>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:45.727" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:45.728" starttime="20160727 10:21:45.725"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:45.728" starttime="20160727 10:21:45.722"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:45.728" starttime="20160727 10:21:45.385"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:45.728" critical="yes" starttime="20160727 10:21:45.166"></status>
 </test>
-<test id="s1-t2" name="admin">
+<test id="s1-s1-t2" name="Invalid Password">
+<kw type="setup" name="Go To Login Page" library="dec_resource">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:45.730" level="INFO">Opening url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<status status="PASS" endtime="20160727 10:21:45.942" starttime="20160727 10:21:45.730"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="dec_resource">
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:45.945" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:45.945" starttime="20160727 10:21:45.943"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:45.946" starttime="20160727 10:21:45.943"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:45.946" starttime="20160727 10:21:45.729"></status>
+</kw>
+<kw name="Login With Invalid Credentials Should Fail">
+<arguments>
+<arg>${VALID USERNAME}</arg>
+<arg>invalid</arg>
+</arguments>
+<kw name="Input Username" library="dec_resource">
+<arguments>
+<arg>${username}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:45.947" level="INFO">Typing text 'signage.installer@lexmarkqa.com' into text field 'user_email'</msg>
+<status status="PASS" endtime="20160727 10:21:45.992" starttime="20160727 10:21:45.947"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:45.992" starttime="20160727 10:21:45.946"></status>
+</kw>
+<kw name="Input Password" library="dec_resource">
+<arguments>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:45.994" level="INFO">Typing text 'invalid' into text field 'user_password'</msg>
+<status status="PASS" endtime="20160727 10:21:46.028" starttime="20160727 10:21:45.993"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:46.029" starttime="20160727 10:21:45.992"></status>
+</kw>
+<kw name="Submit Credentials" library="dec_resource">
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>commit</arg>
+</arguments>
+<msg timestamp="20160727 10:21:46.029" level="INFO">Clicking button 'commit'.</msg>
+<status status="PASS" endtime="20160727 10:21:46.362" starttime="20160727 10:21:46.029"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:46.362" starttime="20160727 10:21:46.029"></status>
+</kw>
+<kw name="Login Should Have Failed">
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly `url`.</doc>
+<arguments>
+<arg>${ERROR URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:46.365" level="INFO">Current location is 'https://idp-staging.psft.co/auth/users/sign_in'.</msg>
+<status status="PASS" endtime="20160727 10:21:46.365" starttime="20160727 10:21:46.363"></status>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:46.367" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:46.367" starttime="20160727 10:21:46.365"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:46.367" starttime="20160727 10:21:46.363"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:46.367" starttime="20160727 10:21:45.946"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:46.368" critical="yes" starttime="20160727 10:21:45.729"></status>
+</test>
+<test id="s1-s1-t3" name="Invalid Both">
+<kw type="setup" name="Go To Login Page" library="dec_resource">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:46.369" level="INFO">Opening url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<status status="PASS" endtime="20160727 10:21:46.590" starttime="20160727 10:21:46.369"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="dec_resource">
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:46.593" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:46.593" starttime="20160727 10:21:46.591"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:46.594" starttime="20160727 10:21:46.590"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:46.594" starttime="20160727 10:21:46.369"></status>
+</kw>
+<kw name="Login With Invalid Credentials Should Fail">
+<arguments>
+<arg>invalid</arg>
+<arg>invalid</arg>
+</arguments>
+<kw name="Input Username" library="dec_resource">
+<arguments>
+<arg>${username}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:46.595" level="INFO">Typing text 'invalid' into text field 'user_email'</msg>
+<status status="PASS" endtime="20160727 10:21:46.630" starttime="20160727 10:21:46.595"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:46.630" starttime="20160727 10:21:46.594"></status>
+</kw>
+<kw name="Input Password" library="dec_resource">
+<arguments>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:46.631" level="INFO">Typing text 'invalid' into text field 'user_password'</msg>
+<status status="PASS" endtime="20160727 10:21:46.666" starttime="20160727 10:21:46.630"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:46.666" starttime="20160727 10:21:46.630"></status>
+</kw>
+<kw name="Submit Credentials" library="dec_resource">
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>commit</arg>
+</arguments>
+<msg timestamp="20160727 10:21:46.667" level="INFO">Clicking button 'commit'.</msg>
+<status status="PASS" endtime="20160727 10:21:46.899" starttime="20160727 10:21:46.667"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:46.899" starttime="20160727 10:21:46.666"></status>
+</kw>
+<kw name="Login Should Have Failed">
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly `url`.</doc>
+<arguments>
+<arg>${ERROR URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:46.903" level="INFO">Current location is 'https://idp-staging.psft.co/auth/users/sign_in'.</msg>
+<status status="PASS" endtime="20160727 10:21:46.903" starttime="20160727 10:21:46.900"></status>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:46.906" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:46.906" starttime="20160727 10:21:46.903"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:46.907" starttime="20160727 10:21:46.899"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:46.907" starttime="20160727 10:21:46.594"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:46.907" critical="yes" starttime="20160727 10:21:46.368"></status>
+</test>
+<test id="s1-s1-t4" name="Empty Username">
+<kw type="setup" name="Go To Login Page" library="dec_resource">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:46.909" level="INFO">Opening url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<status status="PASS" endtime="20160727 10:21:47.123" starttime="20160727 10:21:46.909"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="dec_resource">
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.126" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:47.126" starttime="20160727 10:21:47.124"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.126" starttime="20160727 10:21:47.123"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.126" starttime="20160727 10:21:46.908"></status>
+</kw>
+<kw name="Login With Invalid Credentials Should Fail">
+<arguments>
+<arg>${EMPTY}</arg>
+<arg>${VALID PASSWORD}</arg>
+</arguments>
+<kw name="Input Username" library="dec_resource">
+<arguments>
+<arg>${username}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.127" level="INFO">Typing text '' into text field 'user_email'</msg>
+<status status="PASS" endtime="20160727 10:21:47.162" starttime="20160727 10:21:47.127"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.162" starttime="20160727 10:21:47.127"></status>
+</kw>
+<kw name="Input Password" library="dec_resource">
+<arguments>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.163" level="INFO">Typing text 'password' into text field 'user_password'</msg>
+<status status="PASS" endtime="20160727 10:21:47.199" starttime="20160727 10:21:47.163"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.200" starttime="20160727 10:21:47.162"></status>
+</kw>
+<kw name="Submit Credentials" library="dec_resource">
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>commit</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.201" level="INFO">Clicking button 'commit'.</msg>
+<status status="PASS" endtime="20160727 10:21:47.435" starttime="20160727 10:21:47.200"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.435" starttime="20160727 10:21:47.200"></status>
+</kw>
+<kw name="Login Should Have Failed">
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly `url`.</doc>
+<arguments>
+<arg>${ERROR URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.439" level="INFO">Current location is 'https://idp-staging.psft.co/auth/users/sign_in'.</msg>
+<status status="PASS" endtime="20160727 10:21:47.439" starttime="20160727 10:21:47.436"></status>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.442" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:47.442" starttime="20160727 10:21:47.439"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.442" starttime="20160727 10:21:47.435"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.443" starttime="20160727 10:21:47.126"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.443" critical="yes" starttime="20160727 10:21:46.908"></status>
+</test>
+<test id="s1-s1-t5" name="Empty Password">
+<kw type="setup" name="Go To Login Page" library="dec_resource">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.445" level="INFO">Opening url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<status status="PASS" endtime="20160727 10:21:47.660" starttime="20160727 10:21:47.445"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="dec_resource">
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.663" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:47.663" starttime="20160727 10:21:47.661"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.663" starttime="20160727 10:21:47.660"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.664" starttime="20160727 10:21:47.444"></status>
+</kw>
+<kw name="Login With Invalid Credentials Should Fail">
+<arguments>
+<arg>${VALID USERNAME}</arg>
+<arg>${EMPTY}</arg>
+</arguments>
+<kw name="Input Username" library="dec_resource">
+<arguments>
+<arg>${username}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.665" level="INFO">Typing text 'signage.installer@lexmarkqa.com' into text field 'user_email'</msg>
+<status status="PASS" endtime="20160727 10:21:47.708" starttime="20160727 10:21:47.665"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.708" starttime="20160727 10:21:47.664"></status>
+</kw>
+<kw name="Input Password" library="dec_resource">
+<arguments>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.708" level="INFO">Typing text '' into text field 'user_password'</msg>
+<status status="PASS" endtime="20160727 10:21:47.741" starttime="20160727 10:21:47.708"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.741" starttime="20160727 10:21:47.708"></status>
+</kw>
+<kw name="Submit Credentials" library="dec_resource">
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>commit</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.742" level="INFO">Clicking button 'commit'.</msg>
+<status status="PASS" endtime="20160727 10:21:47.875" starttime="20160727 10:21:47.741"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.875" starttime="20160727 10:21:47.741"></status>
+</kw>
+<kw name="Login Should Have Failed">
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly `url`.</doc>
+<arguments>
+<arg>${ERROR URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.878" level="INFO">Current location is 'https://idp-staging.psft.co/auth/users/sign_in'.</msg>
+<status status="PASS" endtime="20160727 10:21:47.878" starttime="20160727 10:21:47.875"></status>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.880" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:47.880" starttime="20160727 10:21:47.878"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.880" starttime="20160727 10:21:47.875"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.881" starttime="20160727 10:21:47.664"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:47.881" critical="yes" starttime="20160727 10:21:47.444"></status>
+</test>
+<test id="s1-s1-t6" name="Empty Both">
+<kw type="setup" name="Go To Login Page" library="dec_resource">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:47.882" level="INFO">Opening url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<status status="PASS" endtime="20160727 10:21:48.095" starttime="20160727 10:21:47.882"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="dec_resource">
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:48.097" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:48.098" starttime="20160727 10:21:48.095"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:48.098" starttime="20160727 10:21:48.095"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:48.098" starttime="20160727 10:21:47.882"></status>
+</kw>
+<kw name="Login With Invalid Credentials Should Fail">
+<arguments>
+<arg>${EMPTY}</arg>
+<arg>${EMPTY}</arg>
+</arguments>
+<kw name="Input Username" library="dec_resource">
+<arguments>
+<arg>${username}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:48.099" level="INFO">Typing text '' into text field 'user_email'</msg>
+<status status="PASS" endtime="20160727 10:21:48.132" starttime="20160727 10:21:48.099"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:48.132" starttime="20160727 10:21:48.099"></status>
+</kw>
+<kw name="Input Password" library="dec_resource">
+<arguments>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:48.133" level="INFO">Typing text '' into text field 'user_password'</msg>
+<status status="PASS" endtime="20160727 10:21:48.165" starttime="20160727 10:21:48.133"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:48.165" starttime="20160727 10:21:48.133"></status>
+</kw>
+<kw name="Submit Credentials" library="dec_resource">
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>commit</arg>
+</arguments>
+<msg timestamp="20160727 10:21:48.166" level="INFO">Clicking button 'commit'.</msg>
+<status status="PASS" endtime="20160727 10:21:48.297" starttime="20160727 10:21:48.166"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:48.298" starttime="20160727 10:21:48.165"></status>
+</kw>
+<kw name="Login Should Have Failed">
+<kw name="Location Should Be" library="Selenium2Library">
+<doc>Verifies that current URL is exactly `url`.</doc>
+<arguments>
+<arg>${ERROR URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:48.301" level="INFO">Current location is 'https://idp-staging.psft.co/auth/users/sign_in'.</msg>
+<status status="PASS" endtime="20160727 10:21:48.302" starttime="20160727 10:21:48.298"></status>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:48.309" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:48.309" starttime="20160727 10:21:48.302"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:48.310" starttime="20160727 10:21:48.298"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:48.310" starttime="20160727 10:21:48.098"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:48.310" critical="yes" starttime="20160727 10:21:47.881"></status>
+</test>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20160727 10:21:48.318" starttime="20160727 10:21:48.311"></status>
+</kw>
+<doc>A test suite containing tests related to invalid login.
+
+These tests are data-driven by their nature. They use a single
+keyword, specified with Test Template setting, that is called
+with different arguments to cover different scenarios.
+
+This suite also demonstrates using setups and teardowns in
+different levels.</doc>
+<status status="PASS" endtime="20160727 10:21:48.318" starttime="20160727 10:21:43.397"></status>
+</suite>
+<suite source="/home/seith/Code/repos/robot_tut/robot/implementation/testsuites/dec_login.robot" id="s1-s2" name="Dec Login">
+<test id="s1-s2-t1" name="lexmark_installer">
 <kw type="setup" name="Open Browser To Login Page" library="dec_resource">
 <kw name="Open Browser" library="Selenium2Library">
 <doc>Opens a new browser instance to given URL.</doc>
@@ -40,49 +611,236 @@ WebDriverException: Message: unknown error: unrecognized Blink revision: 4fc3665
 <arg>${LOGIN URL}</arg>
 <arg>${BROWSER}</arg>
 </arguments>
-<msg timestamp="20160718 10:19:08.817" level="INFO">Opening browser 'chrome' to base url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
-<kw name="Capture Page Screenshot" library="Selenium2Library">
-<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<msg timestamp="20160718 10:19:10.601" level="FAIL">No browser is open</msg>
-<status status="FAIL" endtime="20160718 10:19:10.601" starttime="20160718 10:19:10.599"></status>
+<msg timestamp="20160727 10:21:48.330" level="INFO">Opening browser 'PhantomJS' to base url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<status status="PASS" endtime="20160727 10:21:50.000" starttime="20160727 10:21:48.329"></status>
 </kw>
-<msg timestamp="20160718 10:19:10.602" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
-<msg timestamp="20160718 10:19:10.602" level="FAIL">WebDriverException: Message: unknown error: unrecognized Blink revision: 4fc366553993dd1524b47a280fed49d8ec28421e
-  (Driver info: chromedriver=2.10.267518,platform=Linux 3.16.0-38-generic x86_64)
-</msg>
-<status status="FAIL" endtime="20160718 10:19:10.602" starttime="20160718 10:19:08.817"></status>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20160727 10:21:50.003" starttime="20160727 10:21:50.000"></status>
 </kw>
-<status status="FAIL" endtime="20160718 10:19:10.603" starttime="20160718 10:19:08.816"></status>
+<kw name="Set Selenium Speed" library="Selenium2Library">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20160727 10:21:50.004" starttime="20160727 10:21:50.004"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="dec_resource">
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:50.007" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:50.007" starttime="20160727 10:21:50.005"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:50.007" starttime="20160727 10:21:50.005"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:50.007" starttime="20160727 10:21:48.328"></status>
+</kw>
+<kw name="Login With Credentials Should Pass">
+<arguments>
+<arg>signage.installer@lexmarkqa.com</arg>
+<arg>password</arg>
+</arguments>
+<kw name="Input Username" library="dec_resource">
+<arguments>
+<arg>${username}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:50.008" level="INFO">Typing text 'signage.installer@lexmarkqa.com' into text field 'user_email'</msg>
+<status status="PASS" endtime="20160727 10:21:50.064" starttime="20160727 10:21:50.008"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:50.064" starttime="20160727 10:21:50.008"></status>
+</kw>
+<kw name="Input Password" library="dec_resource">
+<arguments>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:50.065" level="INFO">Typing text 'password' into text field 'user_password'</msg>
+<status status="PASS" endtime="20160727 10:21:50.121" starttime="20160727 10:21:50.065"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:50.121" starttime="20160727 10:21:50.064"></status>
+</kw>
+<kw name="Submit Credentials" library="dec_resource">
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>commit</arg>
+</arguments>
+<msg timestamp="20160727 10:21:50.122" level="INFO">Clicking button 'commit'.</msg>
+<status status="PASS" endtime="20160727 10:21:51.403" starttime="20160727 10:21:50.122"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:51.403" starttime="20160727 10:21:50.121"></status>
+</kw>
+<kw name="User Page Should Be Open" library="dec_resource">
+<kw name="Location Should Contain" library="Selenium2Library">
+<doc>Verifies that current URL contains `expected`.</doc>
+<arguments>
+<arg>${USER URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:51.406" level="INFO">Current location contains 'https://displaymanager-staging.dscc.lxk.co/users'.</msg>
+<status status="PASS" endtime="20160727 10:21:51.407" starttime="20160727 10:21:51.404"></status>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Display Manager</arg>
+</arguments>
+<msg timestamp="20160727 10:21:51.408" level="INFO">Page title is 'Display Manager'.</msg>
+<status status="PASS" endtime="20160727 10:21:51.408" starttime="20160727 10:21:51.407"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:51.409" starttime="20160727 10:21:51.403"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:51.409" starttime="20160727 10:21:50.007"></status>
 </kw>
 <kw type="teardown" name="Close Browser" library="Selenium2Library">
 <doc>Closes the current browser.</doc>
-<status status="PASS" endtime="20160718 10:19:10.603" starttime="20160718 10:19:10.603"></status>
+<status status="PASS" endtime="20160727 10:21:51.413" starttime="20160727 10:21:51.409"></status>
 </kw>
-<status status="FAIL" endtime="20160718 10:19:10.603" critical="yes" starttime="20160718 10:19:08.816">Setup failed:
-WebDriverException: Message: unknown error: unrecognized Blink revision: 4fc366553993dd1524b47a280fed49d8ec28421e
-  (Driver info: chromedriver=2.10.267518,platform=Linux 3.16.0-38-generic x86_64)
-</status>
+<status status="PASS" endtime="20160727 10:21:51.413" critical="yes" starttime="20160727 10:21:48.327"></status>
+</test>
+<test id="s1-s2-t2" name="admin">
+<kw type="setup" name="Open Browser To Login Page" library="dec_resource">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:51.415" level="INFO">Opening browser 'PhantomJS' to base url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<status status="PASS" endtime="20160727 10:21:54.257" starttime="20160727 10:21:51.415"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20160727 10:21:54.261" starttime="20160727 10:21:54.257"></status>
+</kw>
+<kw name="Set Selenium Speed" library="Selenium2Library">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${DELAY}</arg>
+</arguments>
+<status status="PASS" endtime="20160727 10:21:54.262" starttime="20160727 10:21:54.261"></status>
+</kw>
+<kw name="Login Page Should Be Open" library="dec_resource">
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20160727 10:21:54.264" level="INFO">Page title is 'Login'.</msg>
+<status status="PASS" endtime="20160727 10:21:54.264" starttime="20160727 10:21:54.262"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:54.264" starttime="20160727 10:21:54.262"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:54.264" starttime="20160727 10:21:51.415"></status>
+</kw>
+<kw name="Login With Credentials Should Pass">
+<arguments>
+<arg>signage.admin@lexmarkqa.com</arg>
+<arg>password</arg>
+</arguments>
+<kw name="Input Username" library="dec_resource">
+<arguments>
+<arg>${username}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:54.266" level="INFO">Typing text 'signage.admin@lexmarkqa.com' into text field 'user_email'</msg>
+<status status="PASS" endtime="20160727 10:21:54.320" starttime="20160727 10:21:54.266"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:54.320" starttime="20160727 10:21:54.265"></status>
+</kw>
+<kw name="Input Password" library="dec_resource">
+<arguments>
+<arg>${password}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:54.321" level="INFO">Typing text 'password' into text field 'user_password'</msg>
+<status status="PASS" endtime="20160727 10:21:54.370" starttime="20160727 10:21:54.321"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:54.370" starttime="20160727 10:21:54.321"></status>
+</kw>
+<kw name="Submit Credentials" library="dec_resource">
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>commit</arg>
+</arguments>
+<msg timestamp="20160727 10:21:54.371" level="INFO">Clicking button 'commit'.</msg>
+<status status="PASS" endtime="20160727 10:21:55.652" starttime="20160727 10:21:54.371"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:55.652" starttime="20160727 10:21:54.370"></status>
+</kw>
+<kw name="User Page Should Be Open" library="dec_resource">
+<kw name="Location Should Contain" library="Selenium2Library">
+<doc>Verifies that current URL contains `expected`.</doc>
+<arguments>
+<arg>${USER URL}</arg>
+</arguments>
+<msg timestamp="20160727 10:21:55.655" level="INFO">Current location contains 'https://displaymanager-staging.dscc.lxk.co/users'.</msg>
+<status status="PASS" endtime="20160727 10:21:55.655" starttime="20160727 10:21:55.653"></status>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<doc>Verifies that current page title equals `title`.</doc>
+<arguments>
+<arg>Display Manager</arg>
+</arguments>
+<msg timestamp="20160727 10:21:55.657" level="INFO">Page title is 'Display Manager'.</msg>
+<status status="PASS" endtime="20160727 10:21:55.658" starttime="20160727 10:21:55.656"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:55.658" starttime="20160727 10:21:55.652"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:55.658" starttime="20160727 10:21:54.265"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20160727 10:21:55.662" starttime="20160727 10:21:55.658"></status>
+</kw>
+<status status="PASS" endtime="20160727 10:21:55.662" critical="yes" starttime="20160727 10:21:51.414"></status>
 </test>
 <doc>A test suite containing tests related to users logging into DM.
 
 These tests are data-driven by nature. They use a single
 keyword, specified with Test Template setting, that is called
 with different arguments to cover different scenarios.</doc>
-<status status="FAIL" endtime="20160718 10:19:10.604" starttime="20160718 10:19:06.890"></status>
+<status status="PASS" endtime="20160727 10:21:55.664" starttime="20160727 10:21:48.321"></status>
+</suite>
+<status status="PASS" endtime="20160727 10:21:55.668" starttime="20160727 10:21:43.380"></status>
 </suite>
 <statistics>
 <total>
-<stat fail="2" pass="0">Critical Tests</stat>
-<stat fail="2" pass="0">All Tests</stat>
+<stat fail="0" pass="8">Critical Tests</stat>
+<stat fail="0" pass="8">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat fail="2" id="s1" name="Dec Login" pass="0">Dec Login</stat>
+<stat fail="0" id="s1" name="Testsuites" pass="8">Testsuites</stat>
+<stat fail="0" id="s1-s1" name="Dec Invalid Login" pass="6">Testsuites.Dec Invalid Login</stat>
+<stat fail="0" id="s1-s2" name="Dec Login" pass="2">Testsuites.Dec Login</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20160718 10:19:08.814" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
-<msg timestamp="20160718 10:19:10.602" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
 </errors>
 </robot>

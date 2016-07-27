@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20160726 18:03:37.915" generator="Robot 3.0 (Python 2.7.12 on linux2)">
+<suite source="/home/seith/Code/repos/robot_tut/robot" id="s1" name="Robot">
+<suite source="/home/seith/Code/repos/robot_tut/robot/implementation" id="s1-s1" name="Implementation">
+<suite source="/home/seith/Code/repos/robot_tut/robot/implementation/testsuites" id="s1-s1-s1" name="Testsuites">
+<suite source="/home/seith/Code/repos/robot_tut/robot/implementation/testsuites/dec_invalid_login.robot" id="s1-s1-s1-s1" name="Dec Invalid Login">
+<kw type="setup" name="Open Browser To Login Page" library="dec_resource">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20160726 18:03:38.018" level="INFO">Opening browser 'PhantomJS' to base url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20160726 18:03:38.027" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20160726 18:03:38.027" starttime="20160726 18:03:38.025"></status>
+</kw>
+<msg timestamp="20160726 18:03:38.027" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20160726 18:03:38.028" level="FAIL">WebDriverException: Message: 'phantomjs' executable needs to be in PATH. 
+</msg>
+<status status="FAIL" endtime="20160726 18:03:38.028" starttime="20160726 18:03:38.018"></status>
+</kw>
+<status status="FAIL" endtime="20160726 18:03:38.028" starttime="20160726 18:03:38.017"></status>
+</kw>
+<test id="s1-s1-s1-s1-t1" name="Invalid Username">
+<status status="FAIL" endtime="20160726 18:03:38.029" critical="yes" starttime="20160726 18:03:38.028">Parent suite setup failed:
+WebDriverException: Message: 'phantomjs' executable needs to be in PATH. 
+</status>
+</test>
+<test id="s1-s1-s1-s1-t2" name="Invalid Password">
+<status status="FAIL" endtime="20160726 18:03:38.030" critical="yes" starttime="20160726 18:03:38.030">Parent suite setup failed:
+WebDriverException: Message: 'phantomjs' executable needs to be in PATH. 
+</status>
+</test>
+<test id="s1-s1-s1-s1-t3" name="Invalid Both">
+<status status="FAIL" endtime="20160726 18:03:38.031" critical="yes" starttime="20160726 18:03:38.030">Parent suite setup failed:
+WebDriverException: Message: 'phantomjs' executable needs to be in PATH. 
+</status>
+</test>
+<test id="s1-s1-s1-s1-t4" name="Empty Username">
+<status status="FAIL" endtime="20160726 18:03:38.032" critical="yes" starttime="20160726 18:03:38.031">Parent suite setup failed:
+WebDriverException: Message: 'phantomjs' executable needs to be in PATH. 
+</status>
+</test>
+<test id="s1-s1-s1-s1-t5" name="Empty Password">
+<status status="FAIL" endtime="20160726 18:03:38.033" critical="yes" starttime="20160726 18:03:38.032">Parent suite setup failed:
+WebDriverException: Message: 'phantomjs' executable needs to be in PATH. 
+</status>
+</test>
+<test id="s1-s1-s1-s1-t6" name="Empty Both">
+<status status="FAIL" endtime="20160726 18:03:38.036" critical="yes" starttime="20160726 18:03:38.033">Parent suite setup failed:
+WebDriverException: Message: 'phantomjs' executable needs to be in PATH. 
+</status>
+</test>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20160726 18:03:38.041" starttime="20160726 18:03:38.040"></status>
+</kw>
+<doc>A test suite containing tests related to invalid login.
+
+These tests are data-driven by their nature. They use a single
+keyword, specified with Test Template setting, that is called
+with different arguments to cover different scenarios.
+
+This suite also demonstrates using setups and teardowns in
+different levels.</doc>
+<status status="FAIL" endtime="20160726 18:03:38.041" starttime="20160726 18:03:37.939">Suite setup failed:
+WebDriverException: Message: 'phantomjs' executable needs to be in PATH. 
+</status>
+</suite>
+<suite source="/home/seith/Code/repos/robot_tut/robot/implementation/testsuites/dec_login.robot" id="s1-s1-s1-s2" name="Dec Login">
+<test id="s1-s1-s1-s2-t1" name="lexmark_installer">
+<kw type="setup" name="Open Browser To Login Page" library="dec_resource">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20160726 18:03:38.056" level="INFO">Opening browser 'PhantomJS' to base url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20160726 18:03:38.062" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20160726 18:03:38.063" starttime="20160726 18:03:38.060"></status>
+</kw>
+<msg timestamp="20160726 18:03:38.063" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20160726 18:03:38.063" level="FAIL">WebDriverException: Message: 'phantomjs' executable needs to be in PATH. 
+</msg>
+<status status="FAIL" endtime="20160726 18:03:38.063" starttime="20160726 18:03:38.056"></status>
+</kw>
+<status status="FAIL" endtime="20160726 18:03:38.063" starttime="20160726 18:03:38.055"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20160726 18:03:38.064" starttime="20160726 18:03:38.064"></status>
+</kw>
+<status status="FAIL" endtime="20160726 18:03:38.064" critical="yes" starttime="20160726 18:03:38.053">Setup failed:
+WebDriverException: Message: 'phantomjs' executable needs to be in PATH. 
+</status>
+</test>
+<test id="s1-s1-s1-s2-t2" name="admin">
+<kw type="setup" name="Open Browser To Login Page" library="dec_resource">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20160726 18:03:38.066" level="INFO">Opening browser 'PhantomJS' to base url 'https://displaymanager-staging.dscc.lxk.co/users/auth/perceptive_idp'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20160726 18:03:38.072" level="FAIL">No browser is open</msg>
+<status status="FAIL" endtime="20160726 18:03:38.072" starttime="20160726 18:03:38.070"></status>
+</kw>
+<msg timestamp="20160726 18:03:38.072" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20160726 18:03:38.072" level="FAIL">WebDriverException: Message: 'phantomjs' executable needs to be in PATH. 
+</msg>
+<status status="FAIL" endtime="20160726 18:03:38.073" starttime="20160726 18:03:38.065"></status>
+</kw>
+<status status="FAIL" endtime="20160726 18:03:38.073" starttime="20160726 18:03:38.065"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20160726 18:03:38.074" starttime="20160726 18:03:38.073"></status>
+</kw>
+<status status="FAIL" endtime="20160726 18:03:38.074" critical="yes" starttime="20160726 18:03:38.065">Setup failed:
+WebDriverException: Message: 'phantomjs' executable needs to be in PATH. 
+</status>
+</test>
+<doc>A test suite containing tests related to users logging into DM.
+
+These tests are data-driven by nature. They use a single
+keyword, specified with Test Template setting, that is called
+with different arguments to cover different scenarios.</doc>
+<status status="FAIL" endtime="20160726 18:03:38.074" starttime="20160726 18:03:38.043"></status>
+</suite>
+<status status="FAIL" endtime="20160726 18:03:38.076" starttime="20160726 18:03:37.937"></status>
+</suite>
+<status status="FAIL" endtime="20160726 18:03:38.077" starttime="20160726 18:03:37.936"></status>
+</suite>
+<status status="FAIL" endtime="20160726 18:03:38.080" starttime="20160726 18:03:37.917"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="8" pass="0">Critical Tests</stat>
+<stat fail="8" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="8" id="s1" name="Robot" pass="0">Robot</stat>
+<stat fail="8" id="s1-s1" name="Implementation" pass="0">Robot.Implementation</stat>
+<stat fail="8" id="s1-s1-s1" name="Testsuites" pass="0">Robot.Implementation.Testsuites</stat>
+<stat fail="6" id="s1-s1-s1-s1" name="Dec Invalid Login" pass="0">Robot.Implementation.Testsuites.Dec Invalid Login</stat>
+<stat fail="2" id="s1-s1-s1-s2" name="Dec Login" pass="0">Robot.Implementation.Testsuites.Dec Login</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20160726 18:03:38.027" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20160726 18:03:38.063" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+<msg timestamp="20160726 18:03:38.072" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No browser is open</msg>
+</errors>
+</robot>
